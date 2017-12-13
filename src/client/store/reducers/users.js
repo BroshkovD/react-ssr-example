@@ -1,10 +1,13 @@
+import { createReducer } from '../../../helpers/redux';
+
 import { FETCH_USERS } from '../actions';
 
-export default (state = [], action) => {
-  switch (action.type) {
-    case FETCH_USERS:
-      return action.payload.data;
-    default:
-      return state;
+const initialState = [];
+
+const handlers = {
+  [FETCH_USERS]: (state, { payload }) => {
+      return payload.data;
   }
 };
+
+export default createReducer(initialState, handlers);
